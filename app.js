@@ -7,11 +7,7 @@ const Posts = require('./models/post');
 const app = express();
 
 //connect DB
-mongoose.connect('mongodb://localhost:27017/cleanblog-test-db' , {
-  useNewUrlParser : true,
-  useUnifiedTopology:true,
-
-})
+mongoose.connect('mongodb://localhost:27017/cleanblog-test-db');
 
 //TEMPLATE ENGİNE
 app.set('view engine', 'ejs');
@@ -27,6 +23,16 @@ app.get('/', async (req, res) => {
     posts
   });
 });
+
+
+app.get('/posts/:id', async (req, res) => {
+  const post = await Posts.findById(req.params.id);
+    res.render('post' , {
+      post
+    })
+});
+
+
 app.get('/about', (req, res) => {
   res.render('about');
 });
