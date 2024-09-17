@@ -15,6 +15,18 @@
             <h2 class="subheading"><%= post.detail %></h2>
             <span class="meta">Posted by
               <%= post.dateCreated %></span>
+
+              
+               <form method="POST" action="/post/<%= post._id %>?_method=DELETE">  
+                <button type="submit" class="subheading" href="">DELETE</button>
+              </form>
+              
+              <form method="GET" action="/post/edit/<%= post._id %>" >
+                <button type="submit" class="subheading" href="">UPDATE</button>
+              </form>
+
+
+
           </div>
         </div>
       </div>
